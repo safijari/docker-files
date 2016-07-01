@@ -1,14 +1,16 @@
 #!/bin/bash
-docker run -it --net=host -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
+docker run -it --rm --net=host -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
+    --user=$(id -u) \
 --workdir=/home/$USER \
 --volume="/etc/group:/etc/group:ro" \
 --volume="/etc/passwd:/etc/passwd:ro" \
 --volume="/etc/shadow:/etc/shadow:ro" \
 --volume="/etc/sudoers.d:/etc/sudoers.d:ro" \
--v /home/jari/Dropbox/Jari_Simbe/kinetic_ws:/home/jari/kinetic_ws \
--v /home/jari/Qt:/home/jari/Qt \
--v /home/jari/.config:/root/.config \
--v /home/jari/.bash_aliases:/root/.bash_aliases \
+-v /home/$USER/Dropbox/Jari_Simbe/kinetic_ws:/home/jari/kinetic_ws \
+-v /home/$USER/Qt:/home/$USER/Qt \
+-v /home/$USER/.config:/home/$USER/.config \
+-v /home/$USER/.bash_aliases:/home/$USER/.bash_aliases \
+-v /home/$USER/.bashrc:/home/$USER/.bashrc \
+-v /home/$USER/.bash_history:/home/$USER/.bash_history \
     roskin
-    #--user $(id -u) \
 

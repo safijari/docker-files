@@ -1,0 +1,14 @@
+#!/bin/bash
+docker run -it --net=host -e DISPLAY=$DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix \
+--workdir=/home/$USER \
+--volume="/etc/group:/etc/group:ro" \
+--volume="/etc/passwd:/etc/passwd:ro" \
+--volume="/etc/shadow:/etc/shadow:ro" \
+--volume="/etc/sudoers.d:/etc/sudoers.d:ro" \
+-v /home/jari/Dropbox/Jari_Simbe/kinetic_ws:/home/jari/kinetic_ws \
+-v /home/jari/Qt:/home/jari/Qt \
+-v /home/jari/.config:/root/.config \
+-v /home/jari/.bash_aliases:/root/.bash_aliases \
+    roskin
+    #--user $(id -u) \
+
